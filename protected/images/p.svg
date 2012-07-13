@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg"  width="100%" height="100%" preserveAspectRatio="xMinYMin meet" viewBox="0 0 402 402" version="1.1">
+<path
+d="M20 98.57 C44.17 111.36 178.12 66.47 214.29 20 202.61 142.12 173.01 397.91 25.72 381.43 21.98 381.01 15.1 59.46 360 24.28 c43.8 -4.47 0.39 177.27 -170 171.43l191.43 -20"
+style="
+fill:	none;
+stroke:	#<?php echo $color;?>;
+stroke-width:	40;
+stroke-linecap:	round;
+stroke-linejoin:	round;
+"
+/>
+</svg>

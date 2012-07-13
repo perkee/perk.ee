@@ -1,0 +1,60 @@
+  <header>
+    <h1>A heatmapper</h1>
+  </header>
+  <section>
+    <div id="heatmap">
+      <table>
+        <thead>
+          <tr>
+            <th>index</th>
+            <th>1</th>
+            <th>2</th>
+          </tr>
+        </thead>
+        <tbody id="heatmap_table">
+          <tr>
+            <td class="label">1</td>
+            <td contenteditable="true">0</td>
+            <td contenteditable="true">1</td>
+          </tr>
+          <tr>
+            <td class="label">2</td>
+            <td contenteditable="true">2</td>
+            <td contenteditable="true">3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section id="tabbedViews">
+    <ul id="tabBar">
+        <li><a href="#canvas">Canvas</a></li>
+        <li><a href="#image">Image</a></li>
+        <li><a href="#plainText">Plain Text</a></li>
+    </ul>
+    <div id="canvas">
+      <canvas height="0" width="290"></canvas>
+    </div>
+    <div id="image">
+      <img src=""/>
+    </div>
+    <div id="plainText">
+      <form>
+        <fieldset>
+          <textarea type="number"></textarea>
+          <input type="submit"/>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+  <section>
+    <div id="options">
+      <ul>
+        <li><a href="#" id="toggleNumbers">toggle numbers</a></li>
+        <li>Cell Size: <span id="cellSize" contenteditable="true">60</span>
+            <a href="#" id="increaseCellSize">&#x27F0;</a>
+            <a href="#" id="decreaseCellSize">&#x27F1;</a>
+        </li>
+      </ul>
+    </div>
+  </section>

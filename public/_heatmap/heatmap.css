@@ -1,0 +1,223 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, canvas {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/***************************************************/
+form
+{
+  width: 200px;
+}
+textarea
+{
+  width: 285px;
+  height: 290px;
+  font-family: monospace;
+  font-size: 14px;
+  border: none;
+}
+input
+{
+  width: 290px;
+  height: 20px;
+  background: black;
+  color: white;
+  border: none;
+}
+#heatmap
+{
+  width: 181px;
+  height: 181px;
+  position: relative;
+}
+table
+{
+  table-layout: fixed;
+  width: 181px;
+  /*height: 181px;*/
+}
+td, th
+{
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+tr
+{
+  height: 60px;
+}
+#heatmap a
+{
+  background: black;
+  display: table-cell;
+  color: white;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+}
+#plusrow
+{
+  width: 100%;
+  height: 40px;
+  bottom: 0px;
+}
+#pluscol
+{
+  width: 40px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+}
+th, .label /*table legends*/
+{
+  background: #ddd;
+}
+td.label, th:nth-child(1)
+{
+  border-right: 1px solid black;
+}
+th
+{
+  border-bottom: black 1px solid;
+}
+#tabbedViews
+{
+  position: absolute;
+  right: 0;
+  top:   10px;
+  width: 300px;
+}
+#tabbedViews ul
+{
+  height: 20px;
+  width:  300px;
+}
+#tabbedViews ul li
+{
+  float: left;
+  display: block;
+  width: 80px;
+  height: 100%;
+  text-align: center;
+  background: black;
+  color: white;
+  margin-right: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius:  5px;
+}
+
+#tabbedViews ul li a
+{
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius:  5px;
+}
+#tabbedViews div
+{
+  border: 5px solid black;
+  padding: 0;
+  height: auto;
+}
+
+#options
+{
+  width: 200px;
+  height: auto;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  border-left: 5px solid black;
+  border-top:  5px solid black;
+  border-top-left-radius: 15px;
+}
+#options li
+{
+  display: block;
+  height: 30px;
+  width: 180px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-top: 5px;
+  background-color: #ddd;
+}
+/*
+#options a
+{
+  display: block;
+  width: 100%;
+  height: 100%;
+}*/
+#increaseCellSize, #decreaseCellSize
+{
+  display: block;
+  position: relative;
+  right: 0px;
+  height: 50%;
+  width: 10px;
+}
+#increaseCellSize
+{
+  top: 0;
+}
+#cellSize:after
+{
+  content: "px";
+}
+#cellSize
+{
+  background: white;
+}

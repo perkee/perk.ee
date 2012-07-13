@@ -1,0 +1,14 @@
+<?php
+  $color = (array_key_exists('stroke', $_GET) && isset($_GET['stroke'])) ? $_GET['stroke'] : 'FFFFFF';
+  $image = '../../protected/images/p.svg';
+  $last_modified = date("D, d M Y H:i:s \G\M\T", max(filemtime(__FILE__),filemtime($image)));
+  $expiration = date("D, d M Y H:i:s \G\M\T", strtotime('+1 year'));
+
+  header("Content-type: image/svg+xml");
+  header("Cache-Control: public, no-transform");
+  header("Expires: $expiration");
+  header("Last-Modified: $last_modified");
+  /*echo('<?xml version="1.0" encoding="UTF-8" standalone="no"?>'."\n");*/
+  echo('<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">');
+  include($image);
+?>

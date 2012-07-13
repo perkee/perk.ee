@@ -1,0 +1,10 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^images/p_(.*).svg$ images/p.svg?stroke=$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]
+
+AddHandler application/x-httpd-php .svg .js
