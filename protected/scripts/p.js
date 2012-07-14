@@ -27,7 +27,7 @@ $(document).ready(function()
         var thumb = $(this).children('div.thumb');
         var width = $(this).width();
         var lp = $('pre').css('padding-left');
-        lp = parseInt(lp.substr(0,lp.length-2));
+        lp = parseInt(lp.substr(0,lp.length-2),10);
         width = width * width;
         width = width / this.scrollWidth;
         thumb.width(width);
