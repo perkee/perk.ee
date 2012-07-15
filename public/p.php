@@ -28,6 +28,10 @@ if($last_modified > filemtime($cacheFile))
     array_values($search),
     $cssFile
   );
+  $cacheContents = preg_replace_callback('|`\d+`|',   //run length compression
+    create_function('$m',                             //for i am unstoppable
+      'return str_repeat(\'A\',trim($m[0],\'`\'));'), //seriously though there were a ton of As
+    $cacheContents);
   
   $lines = file('../protected/pages/code.php');
   $ids = preg_grep('/^[ \t]+<div.*class="project"/', $lines);
