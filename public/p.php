@@ -13,7 +13,7 @@ if($last_modified > filemtime($cacheFile))
   //calculated values
     '|`navItemWidth`|' => floor(100 / substr_count($navlist[0],'<li>')).'%',
   //vendor specific properties
-    '/(transition|box-sizing|text-shadow|border-radius)[^;]*;/' => '$0-webkit-$0-o-$0-moz-$0',
+    '/(transition|box-sizing|text-shadow|border-radius|transform)[^;]*;/' => '$0-webkit-$0-o-$0-moz-$0',
   //JV minification
     "|\n|"             => '',
     "/([:;])[ \t]/"    => '$1',

@@ -4,6 +4,7 @@ $(document).ready(function()
 
   if(document.body.id === 'home')
   {
+
   }
   else if(document.body.id === 'code')
   {
