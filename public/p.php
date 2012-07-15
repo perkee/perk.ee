@@ -48,5 +48,5 @@ header("Cache-Control: public, no-transform");
 header("Expires: $expiration");
 header("Last-Modified: $last_modified");
 include($cacheFile);
-echo("\n/*$last_modified*/")
+echo("\n".'/*Font Awesome-http://fortawesome.github.com/Font-Awesome CC BY 3.0 mods by perkee*/');
 ?>
