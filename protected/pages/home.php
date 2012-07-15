@@ -1,11 +1,10 @@
 <dl id="contact">
  <dt>github</dt>
- <dd class="icon-github"><a href="//github.com/perkee">perkee</a></dd>
+ <dd><a class="icon-github" href="//github.com/perkee" title="see my code">perkee</a></dd>
  <dt>twitter</dt>
- <dd class="icon-twitter"><a href="//twitter.com/perkee">@perkee</a></dd>
+ <dd><a class="icon-twitter" href="//twitter.com/perkee" title="follow me on twitter maybe">@perkee</a></dd>
  <dt>email</dt>
- <dd class="icon-envelope-alt">
-   <a href="mailto:hello@perk.ee">hello@perk.ee</a>
+ <dd><a class="icon-envelope-alt" href="mailto:hello@perk.ee" title="email me">hello@perk.ee</a></dd>
 </dl>
 <p>
   I like to dance and make computers dance.

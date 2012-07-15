@@ -19,15 +19,14 @@ body{width:100%;height:100%;font-size:1em;padding: 15px 15px;box-sizing: border-
     body#home>div#content>p{display: block;width: 100%;padding: 5px 5px 5px 270px;box-sizing: border-box;}
       body#home>div#content>p>img{display:block;clear:both;max-width: 100%;padding: 5px 5px 5px 0;box-sizing: border-box;}
     body#home>div#content>dl#contact{margin:5px;font-size:30px;height:5.5em;width:45%;box-sizing: border-box;position: absolute;}
-    body#home>div#content>dl#contact:after{content:'.';clear:both;visibility:hidden;}/*clearfix*/
       body#home>div#content>dl#contact *{transition-property:color, background;transition-duration:.25s,.25s;transition-timing-function:ease-in-out,ease-in-out;}
       body#home>div#content>dl#contact>dt{display: none;}
         body#home>div#content>dl#contact>dd{display:block;float:left;clear:both;line-height:50px;height:50px;background:#eee;margin:0 0 5px 0;font-size:30px;border-radius:25px;width:9em;box-sizing:border-box;padding: 0 0 10px 0;transform:rotate(-1deg);}
-        body#home>div#content>dl#contact>dd:before{font-size:30px;color:#eee;background:#111;line-height:40px;height:40px;width:40px;text-align:center;margin:5px;border-radius:50%;}
-          body#home>div#content>dl#contact>dd>a{color:#111;text-decoration:none;display:block;clear:none;float:right;width:7em;box-sizing: border-box;}
+          body#home>div#content>dl#contact>dd>a{color:#111;text-decoration:none;display:block;clear:none;float:left;width:100%;box-sizing: border-box;}
+            body#home>div#content>dl#contact>dd>a:before{font-size:30px;color:#eee;background:#111;line-height:40px;height:40px;width:40px;text-align:center;margin:5px;border-radius:50%;}
         body#home>div#content>dl#contact>dd:hover{color: #eee;background: #111;}
-        body#home>div#content>dl#contact>dd:hover:before{color: #111;background: #eee}
           body#home>div#content>dl#contact>dd:hover>a{color: #eee}
+          body#home>div#content>dl#contact>dd:hover>a:before{color: #111;background: #eee}
 /*code page stuff*/
     body>div#content>div.toc{clear: both;min-height: 25px;padding: 5px 0 0 0;float: left;}
       body>div#content>div.toc>ul{list-style: none;float: left;}
