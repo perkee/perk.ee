@@ -11,9 +11,10 @@ if($last_modified > filemtime($cacheFile))
   
   $search = array(
   //calculated values
+    '|`fa`|'           => base64_encode(file_get_contents('../protected/styles/fa.ttf')),
     '|`navItemWidth`|' => floor(100 / substr_count($navlist[0],'<li>')).'%',
   //vendor specific properties
-    '/(transition|box-sizing|text-shadow|border-radius|transform)[^;]*;/' => '$0-webkit-$0-o-$0-moz-$0',
+    '/(transition|box-sizing|text-shadow|border-radius|transform|font-smoothing)[^;]*;/' => '$0-webkit-$0-o-$0-moz-$0',
   //JV minification
     "|\n|"             => '',
     "/([:;])[ \t]/"    => '$1',
@@ -28,10 +29,6 @@ if($last_modified > filemtime($cacheFile))
     array_values($search),
     $cssFile
   );
-  $cacheContents = preg_replace_callback('|`\d+`|',   //run length compression
-    create_function('$m',                             //for i am unstoppable
-      'return str_repeat(\'A\',trim($m[0],\'`\'));'), //seriously though there were a ton of As
-    $cacheContents);
   
   $lines = file('../protected/pages/code.php');
   $ids = preg_grep('/^[ \t]+<div.*class="project"/', $lines);
