@@ -1,0 +1,155 @@
+<?
+header('Content-type: application/json');
+?>
+{
+  "graph" : {
+    "title"                : "Sun Elevation",
+    "color"                : "yellow",
+    "total"                : "false",
+    "type"                 : "line",
+    "refreshEveryNSeconds" : 120,
+    "datasequences" : [
+      {
+        "title"      : "NYC",
+        "datapoints" : [        
+<?
+date_default_timezone_set("America/New_York");
+$date = date("YmjHi");
+$year  = substr($date,0,4);
+$month = substr($date,4,2);
+$day   = substr($date,6,2);
+$hour  = substr($date,8,2);
+$min   = substr($date,10,2);
+
+$file = dirname(__FILE__)."/$year$month$day.txt";
+if(file_exists($file))
+{
+  processFile($file);
+}
+else
+{
+  $fields = array(
+    'FFX'   => '1',
+    'obj'   => '10',
+    'xxy'   => '2013',
+    'xxm'   => '4',
+    'xxd'   => '24',
+    'xxi'   => '10',
+    'st'    => 'NY',
+    'place' => 'New York',
+    'ZZZ'   => 'END'
+  );
+  $fields_string = '';
+  foreach($fields as $key=>$value)
+  {
+    $fields_string .= $key.'='.$value.'&';
+  }
+  rtrim($fields_string, '&');
+  $url = 'http://aa.usno.navy.mil/cgi-bin/aa_altazw.pl';
+  $fp = fopen($file, 'w');
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_FILE, $fp);
+  curl_setopt($ch,CURLOPT_POST, count($fields));
+  curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+  $data = curl_exec($ch);
+  curl_close($ch);
+  fclose($fp);
+  if($data)
+  {
+    processFile($file);
+  }
+  else
+  {
+    unlink($file);
+    print('could not get file');
+  }
+}
+function processFile($file)
+{
+  global $hour, $min;
+  $lines = file($file);
+  $location = $lines[12];//could print location as datasequence title
+  $data = array_slice($lines, 24,count($lines) - 24 - 1 - 4);//relevant lines
+                                    // last idx + 1 - starting idx - 1 - blank/html lines
+  $data = preg_replace('/ +/',',',$data);//turn into csv
+  foreach($data as $index => $line)
+  {
+    $raw = explode(',', $line);
+    $data[$index] = array(
+      'hour'   => substr($raw[0],0,2),
+      'min' => substr($raw[0],3),
+      'alt'    => $raw[1]
+    );
+  }
+  
+  $time = array();
+  if($data[0]['hour'] > $hour - 6)
+  {
+    $time['start'] = $data[0];
+    $time['start']['idx'] = 0;
+  }
+  else
+  {
+    $time['start'] = array(
+      'hour' => $hour - 6,
+      'min'  => substr($min,0,-1).'0',
+      'idx'  => 0 //will be overwritten
+    );
+  }
+  $last = end($data);
+  reset($data);
+  if($last['hour'] < $hour)
+  {
+    $time['end'] = $last;
+    $time['end']['idx'] = count($data) - 1;
+  }
+  else
+  {
+    $time['end'] = array(
+      'hour' => $hour,
+      'min'  => substr($min,0,-1).'0',
+      'idx'  => count($data) - 1 //will be overwritten
+    );
+  }
+  $idx = 0;
+  while
+  (
+    (
+      $time['start']['idx'] == 0 ||
+      $time['end']['idx']   == count($data) - 1
+    ) && 
+    $idx < count($data)
+  )
+  {
+    if
+    (
+      $data[$idx]['hour'] == $time['start']['hour'] &&
+      $data[$idx]['min']  == $time['start']['min']
+    )
+    {
+      $time['start']['idx'] = $idx;
+    }
+    if
+    (
+      $data[$idx]['hour'] == $time['end']['hour'] &&
+      $data[$idx]['min']  == $time['end']['min']
+    )
+    {
+      $time['end']['idx'] = $idx;
+    }
+    $idx++; 
+  }
+  $data = array_slice($data, $time['start']['idx'],$time['end']['idx'] - $time['start']['idx'] + 1);
+
+  foreach($data as $index => $datum)
+  {
+    echo '          '.
+         '{"title":"'.$datum['hour'].':'.$datum['min'].'","value":'.$datum['alt']."}".
+         (($index != count($data) - 1) ? ',' : '')."\n";
+  }
+}
+?>        ]
+      }
+    ]
+  }
+}
